@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excluir conta — Contas na Mão</title>
+<meta name="description" content="Como excluir sua conta do Contas na Mão e quais dados são apagados. How to delete your Bills in Hand account and what data is erased.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Roboto:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #F5F7FA;
+    --surface: #FFFFFF;
+    --surface-2: #EAF0F7;
+    --ink: #16191D;
+    --ink-muted: #56626E;
+    --line: #BFD7ED;
+    --verde: #2E7D5B;
+    --vermelho: #C0392B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #121417;
+      --surface: #1E2126;
+      --surface-2: #262B32;
+      --ink: #E7EBF0;
+      --ink-muted: #9AA7B4;
+      --line: #2F3A45;
+      --verde: #5FBF91;
+      --vermelho: #E5533D;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 16px/1.6 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px 72px;
+  }
+  header {
+    padding-block: 44px 24px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 32px;
+  }
+  .topo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .marca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    color: var(--verde);
+  }
+  .marca svg { flex: none; }
+
+  /* Seletor de idioma */
+  .idiomas {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .idiomas button {
+    font-family: 'Archivo', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 7px 14px;
+    border: 0;
+    background: transparent;
+    color: var(--ink-muted);
+    cursor: pointer;
+  }
+  .idiomas button[aria-pressed="true"] {
+    background: var(--verde);
+    color: #FFFFFF;
+  }
+  .idiomas button:focus-visible {
+    outline: 2px solid var(--verde);
+    outline-offset: -2px;
+  }
+
+  h1 {
+    font-family: 'Archivo', sans-serif;
+    font-size: clamp(27px, 6vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    text-wrap: balance;
+    margin: 0 0 12px;
+  }
+  .lede { margin: 0; color: var(--ink-muted); max-width: 60ch; }
+  h2 {
+    font-family: 'Archivo', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 36px 0 12px;
+  }
+  p { margin: 0 0 14px; max-width: 65ch; }
+  a { color: var(--verde); text-underline-offset: 2px; }
+  .passos {
+    counter-reset: passo;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+  }
+  .passos li {
+    counter-increment: passo;
+    position: relative;
+    padding-left: 42px;
+    margin-bottom: 16px;
+    max-width: 65ch;
+  }
+  .passos li::before {
+    content: counter(passo);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    display: grid;
+    place-items: center;
+  }
+  .caixa {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin: 0 0 20px;
+  }
+  .caixa.alerta { border-left: 4px solid var(--vermelho); border-radius: 0 14px 14px 0; }
+  .caixa p:last-child { margin-bottom: 0; }
+  .caixa h3 {
+    font-family: 'Archivo', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  .tabela-rolavel { overflow-x: auto; margin: 0 0 20px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px 10px 0;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  th {
+    font-family: 'Archivo', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .prazo { white-space: nowrap; color: var(--ink-muted); }
+  code {
+    background: var(--surface-2);
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 44px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-muted);
+    font-size: 14px;
+  }
+  footer p { margin: 0 0 6px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="topo">
+    <div class="marca">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2.5" y="6" width="19" height="13" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M2.5 10.5h19" stroke="currentColor" stroke-width="1.8"/>
+        <circle cx="17" cy="15" r="1.6" fill="currentColor"/>
+      </svg>
+      <span data-lang="pt">Contas na Mão</span>
+      <span data-lang="en" hidden>Bills in Hand</span>
+    </div>
+    <div class="idiomas" role="group" aria-label="Idioma / Language">
+      <button type="button" id="btn-pt" aria-pressed="true">PORTUGUÊS</button>
+      <button type="button" id="btn-en" aria-pressed="false">ENGLISH</button>
+    </div>
+  </div>
+
+  <div data-lang="pt">
+    <h1>Excluir sua conta</h1>
+    <p class="lede">
+      Você pode apagar sua conta e todos os seus dados a qualquer momento, pelo
+      próprio aplicativo ou enviando um pedido por e-mail. As duas formas estão
+      descritas abaixo.
+    </p>
+  </div>
+  <div data-lang="en" hidden>
+    <h1>Delete your account</h1>
+    <p class="lede">
+      You can erase your account and all of your data at any time, either from
+      inside the app or by sending a request by email. Both ways are described
+      below.
+    </p>
+  </div>
+</header>
+
+<!-- ============================ PORTUGUÊS ============================ -->
+<div data-lang="pt">
+
+  <h2>Pelo aplicativo</h2>
+  <p>É o caminho mais rápido: a exclusão acontece na hora, sem espera.</p>
+  <ol class="passos">
+    <li>Abra o <strong>Contas na Mão</strong> e entre na sua conta.</li>
+    <li>Toque no menu <strong>☰</strong>, no canto superior esquerdo.</li>
+    <li>Toque em <strong>Configurações</strong>.</li>
+    <li>Role até o fim e toque em <strong>Excluir minha conta</strong>.</li>
+    <li>Digite seu e-mail para confirmar e toque em <strong>Excluir minha conta definitivamente</strong>.</li>
+  </ol>
+
+  <div class="caixa alerta">
+    <h3>A exclusão é definitiva</h3>
+    <p>
+      Não existe período de carência nem forma de recuperar os dados depois de
+      confirmar. Se você quiser guardar seus lançamentos, use a opção
+      <strong>Baixar PDF do mês</strong> no menu ☰ antes de excluir — ela gera um
+      relatório de cada mês que você quiser manter.
+    </p>
+  </div>
+
+  <h2>Por e-mail</h2>
+  <p>
+    Se você não tem mais o aplicativo instalado ou não consegue acessar sua conta,
+    envie um pedido de exclusão para
+    <a href="mailto:seaopened@gmail.com?subject=Excluir%20minha%20conta%20-%20Contas%20na%20M%C3%A3o">seaopened@gmail.com</a>
+    com o assunto <code>Excluir minha conta</code>, escrevendo do mesmo endereço de
+    e-mail que você usa no aplicativo.
+  </p>
+  <p>
+    O pedido é atendido em até <strong>30 dias</strong>. Pedidos enviados de um
+    e-mail diferente do cadastrado não podem ser atendidos, porque não há como
+    confirmar que o pedido vem do titular da conta.
+  </p>
+
+  <h2>O que é apagado</h2>
+  <div class="tabela-rolavel">
+    <table>
+      <tr>
+        <th>Dado</th>
+        <th>O que acontece</th>
+        <th class="prazo">Prazo</th>
+      </tr>
+      <tr>
+        <td>Conta e endereço de e-mail</td>
+        <td>Apagados</td>
+        <td class="prazo">Imediato</td>
+      </tr>
+      <tr>
+        <td>Orçamentos</td>
+        <td>Apagados</td>
+        <td class="prazo">Imediato</td>
+      </tr>
+      <tr>
+        <td>Despesas, entradas e gastos do dia-a-dia</td>
+        <td>Apagados, de todos os meses</td>
+        <td class="prazo">Imediato</td>
+      </tr>
+      <tr>
+        <td>Preferências no aparelho (tema, idioma)</td>
+        <td>Removidas ao desinstalar o aplicativo</td>
+        <td class="prazo">Ao desinstalar</td>
+      </tr>
+      <tr>
+        <td>Cópias de segurança do banco de dados</td>
+        <td>Expiram no ciclo normal de retenção</td>
+        <td class="prazo">Até 30 dias</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="caixa">
+    <h3>Assinatura</h3>
+    <p>
+      Excluir a conta <strong>não cancela</strong> uma assinatura ativa, porque a
+      cobrança é administrada pela loja onde você assinou — Google Play ou App
+      Store — e não pelo aplicativo. Cancele na loja <strong>antes</strong> de
+      excluir a conta.
+    </p>
+    <p><strong>Android (Google Play)</strong><br>
+      No app Google Play, toque na sua foto de perfil e vá em
+      <strong>Pagamentos e assinaturas → Assinaturas</strong>, ou acesse
+      <a href="https://play.google.com/store/account/subscriptions">play.google.com/store/account/subscriptions</a>.
+    </p>
+    <p><strong>iPhone e iPad (App Store)</strong><br>
+      Em <strong>Ajustes</strong>, toque no seu nome e vá em
+      <strong>Assinaturas</strong>, ou acesse
+      <a href="https://apps.apple.com/account/subscriptions">apps.apple.com/account/subscriptions</a>.
+    </p>
+  </div>
+
+  <footer>
+    <p><strong>Contas na Mão</strong> — controle de contas e orçamento mensal.</p>
+    <p>Dúvidas sobre privacidade ou exclusão de dados: <a href="mailto:seaopened@gmail.com">seaopened@gmail.com</a></p>
+    <p><a href="privacidade.html">Política de Privacidade</a></p>
+  </footer>
+
+</div>
+
+<!-- ============================= ENGLISH ============================= -->
+<div data-lang="en" hidden>
+
+  <h2>From the app</h2>
+  <p>This is the fastest route: the deletion happens immediately, with no waiting period.</p>
+  <ol class="passos">
+    <li>Open <strong>Bills in Hand</strong> and sign in to your account.</li>
+    <li>Tap the <strong>☰</strong> menu in the top left corner.</li>
+    <li>Tap <strong>Settings</strong>.</li>
+    <li>Scroll to the bottom and tap <strong>Delete my account</strong>.</li>
+    <li>Type your email to confirm, then tap <strong>Permanently delete my account</strong>.</li>
+  </ol>
+
+  <div class="caixa alerta">
+    <h3>Deletion is permanent</h3>
+    <p>
+      There is no grace period and no way to recover the data once you confirm.
+      If you want to keep a copy of your records, use
+      <strong>Download month PDF</strong> in the ☰ menu before deleting — it
+      produces a report for any month you want to keep.
+    </p>
+  </div>
+
+  <h2>By email</h2>
+  <p>
+    If you no longer have the app installed, or you cannot sign in to your
+    account, send a deletion request to
+    <a href="mailto:seaopened@gmail.com?subject=Delete%20my%20account%20-%20Bills%20in%20Hand">seaopened@gmail.com</a>
+    with the subject <code>Delete my account</code>, writing from the same email
+    address you use in the app.
+  </p>
+  <p>
+    Requests are handled within <strong>30 days</strong>. We cannot act on
+    requests sent from an address other than the registered one, because there
+    is no way to confirm that the request comes from the account holder.
+  </p>
+
+  <h2>What gets deleted</h2>
+  <div class="tabela-rolavel">
+    <table>
+      <tr>
+        <th>Data</th>
+        <th>What happens</th>
+        <th class="prazo">When</th>
+      </tr>
+      <tr>
+        <td>Account and email address</td>
+        <td>Erased</td>
+        <td class="prazo">Immediately</td>
+      </tr>
+      <tr>
+        <td>Budgets</td>
+        <td>Erased</td>
+        <td class="prazo">Immediately</td>
+      </tr>
+      <tr>
+        <td>Expenses, income and daily spending</td>
+        <td>Erased, for every month</td>
+        <td class="prazo">Immediately</td>
+      </tr>
+      <tr>
+        <td>On-device preferences (theme, language)</td>
+        <td>Removed when you uninstall the app</td>
+        <td class="prazo">On uninstall</td>
+      </tr>
+      <tr>
+        <td>Database backups</td>
+        <td>Expire on the normal retention cycle</td>
+        <td class="prazo">Within 30 days</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="caixa">
+    <h3>Subscription</h3>
+    <p>
+      Deleting your account <strong>does not cancel</strong> an active
+      subscription, because billing is handled by the store where you subscribed
+      — Google Play or the App Store — and not by the app. Cancel it in the store
+      <strong>before</strong> deleting your account.
+    </p>
+    <p><strong>Android (Google Play)</strong><br>
+      In the Google Play app, tap your profile picture and go to
+      <strong>Payments &amp; subscriptions → Subscriptions</strong>, or visit
+      <a href="https://play.google.com/store/account/subscriptions">play.google.com/store/account/subscriptions</a>.
+    </p>
+    <p><strong>iPhone and iPad (App Store)</strong><br>
+      In <strong>Settings</strong>, tap your name and go to
+      <strong>Subscriptions</strong>, or visit
+      <a href="https://apps.apple.com/account/subscriptions">apps.apple.com/account/subscriptions</a>.
+    </p>
+  </div>
+
+  <footer>
+    <p><strong>Bills in Hand</strong> — monthly bills and budget tracking.</p>
+    <p>Questions about privacy or data deletion: <a href="mailto:seaopened@gmail.com">seaopened@gmail.com</a></p>
+    <p><a href="privacidade.html">Privacy Policy</a></p>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var botoes = { pt: document.getElementById('btn-pt'), en: document.getElementById('btn-en') };
+    var titulos = { pt: 'Excluir conta — Contas na Mão', en: 'Delete account — Bills in Hand' };
+
+    function aplicar(idioma) {
+      document.querySelectorAll('[data-lang]').forEach(function (el) {
+        el.hidden = el.getAttribute('data-lang') !== idioma;
+      });
+      botoes.pt.setAttribute('aria-pressed', String(idioma === 'pt'));
+      botoes.en.setAttribute('aria-pressed', String(idioma === 'en'));
+      document.documentElement.lang = idioma === 'pt' ? 'pt-BR' : 'en';
+      document.title = titulos[idioma];
+      // Guardar a escolha é conveniência de leitor, não estado necessário:
+      // em janela privada ou com dados bloqueados isso lança, e a página
+      // precisa continuar funcionando igual.
+      // Mesma chave da página de privacidade: escolher o idioma numa vale
+      // na outra, já que as duas se linkam.
+      try { localStorage.setItem('idioma-site', idioma); } catch (e) {}
+    }
+
+    var salvo = null;
+    try { salvo = localStorage.getItem('idioma-site'); } catch (e) {}
+
+    // Sem escolha anterior, segue o idioma do navegador. O padrão no HTML é
+    // português, então só precisa agir quando o visitante não é lusófono.
+    var inicial = salvo;
+    if (inicial !== 'pt' && inicial !== 'en') {
+      var nav = (navigator.language || 'pt').toLowerCase();
+      inicial = nav.indexOf('pt') === 0 ? 'pt' : 'en';
+    }
+    if (inicial !== 'pt') aplicar(inicial);
+
+    botoes.pt.addEventListener('click', function () { aplicar('pt'); });
+    botoes.en.addEventListener('click', function () { aplicar('en'); });
+  })();
+</script>
+
+</div>
+</body>
+</html>

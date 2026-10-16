@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de Privacidade — Contas na Mão</title>
+<meta name="description" content="Política de privacidade do Contas na Mão: quais dados o app guarda, onde, por quanto tempo e como excluí-los. Privacy policy for Bills in Hand.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Roboto:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #F5F7FA;
+    --surface: #FFFFFF;
+    --surface-2: #EAF0F7;
+    --ink: #16191D;
+    --ink-muted: #56626E;
+    --line: #BFD7ED;
+    --verde: #2E7D5B;
+    --vermelho: #C0392B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #121417;
+      --surface: #1E2126;
+      --surface-2: #262B32;
+      --ink: #E7EBF0;
+      --ink-muted: #9AA7B4;
+      --line: #2F3A45;
+      --verde: #5FBF91;
+      --vermelho: #E5533D;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 16px/1.6 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px 72px; }
+  header {
+    padding-block: 44px 24px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 32px;
+  }
+  .topo {
+    display: flex; flex-wrap: wrap; align-items: center;
+    justify-content: space-between; gap: 14px; margin-bottom: 16px;
+  }
+  .marca {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px;
+    letter-spacing: -0.01em; color: var(--verde);
+  }
+  .marca svg { flex: none; }
+  .idiomas {
+    display: inline-flex; border: 1px solid var(--line);
+    border-radius: 999px; overflow: hidden; background: var(--surface);
+  }
+  .idiomas button {
+    font-family: 'Archivo', sans-serif; font-size: 11.5px; font-weight: 700;
+    letter-spacing: 0.08em; padding: 7px 14px; border: 0;
+    background: transparent; color: var(--ink-muted); cursor: pointer;
+  }
+  .idiomas button[aria-pressed="true"] { background: var(--verde); color: #FFF; }
+  .idiomas button:focus-visible { outline: 2px solid var(--verde); outline-offset: -2px; }
+  h1 {
+    font-family: 'Archivo', sans-serif; font-size: clamp(27px, 6vw, 38px);
+    font-weight: 700; letter-spacing: -0.02em; line-height: 1.12;
+    text-wrap: balance; margin: 0 0 10px;
+  }
+  .atualizado {
+    font-size: 13px; color: var(--ink-muted); margin: 0 0 12px;
+    font-family: 'Archivo', sans-serif; letter-spacing: 0.03em;
+  }
+  .lede { margin: 0; color: var(--ink-muted); max-width: 62ch; }
+  h2 {
+    font-family: 'Archivo', sans-serif; font-size: 20px; font-weight: 600;
+    letter-spacing: -0.01em; margin: 36px 0 12px;
+  }
+  h3 {
+    font-family: 'Archivo', sans-serif; font-size: 15px; font-weight: 600;
+    margin: 22px 0 8px;
+  }
+  p { margin: 0 0 14px; max-width: 68ch; }
+  ul { margin: 0 0 16px; padding-left: 22px; max-width: 68ch; }
+  li { margin-bottom: 7px; }
+  a { color: var(--verde); text-underline-offset: 2px; }
+  .caixa {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; padding: 18px 20px; margin: 0 0 20px;
+  }
+  .caixa.destaque { border-left: 4px solid var(--verde); border-radius: 0 14px 14px 0; }
+  .caixa p:last-child, .caixa ul:last-child { margin-bottom: 0; }
+  .tabela-rolavel { overflow-x: auto; margin: 0 0 20px; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td {
+    text-align: left; padding: 10px 12px 10px 0;
+    border-bottom: 1px solid var(--line); vertical-align: top;
+  }
+  th {
+    font-family: 'Archivo', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-muted);
+  }
+  code {
+    background: var(--surface-2); padding: 2px 6px; border-radius: 5px; font-size: 14px;
+  }
+  footer {
+    margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--line);
+    color: var(--ink-muted); font-size: 14px;
+  }
+  footer p { margin: 0 0 6px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="topo">
+    <div class="marca">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2.5" y="6" width="19" height="13" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M2.5 10.5h19" stroke="currentColor" stroke-width="1.8"/>
+        <circle cx="17" cy="15" r="1.6" fill="currentColor"/>
+      </svg>
+      <span data-lang="pt">Contas na Mão</span>
+      <span data-lang="en" hidden>Bills in Hand</span>
+    </div>
+    <div class="idiomas" role="group" aria-label="Idioma / Language">
+      <button type="button" id="btn-pt" aria-pressed="true">PORTUGUÊS</button>
+      <button type="button" id="btn-en" aria-pressed="false">ENGLISH</button>
+    </div>
+  </div>
+
+  <div data-lang="pt">
+    <h1>Política de Privacidade</h1>
+    <p class="atualizado">Última atualização: 16 de outubro de 2026</p>
+    <p class="lede">
+      O Contas na Mão guarda o mínimo necessário para funcionar: sua conta e os
+      lançamentos que você cadastra. Não há publicidade, não há rastreamento e
+      seus dados não são vendidos nem compartilhados com terceiros para fins
+      comerciais.
+    </p>
+  </div>
+  <div data-lang="en" hidden>
+    <h1>Privacy Policy</h1>
+    <p class="atualizado">Last updated: 16 October 2026</p>
+    <p class="lede">
+      Bills in Hand stores the minimum it needs to work: your account and the
+      records you enter. There is no advertising, no tracking, and your data is
+      not sold or shared with third parties for commercial purposes.
+    </p>
+  </div>
+</header>
+
+<!-- ============================ PORTUGUÊS ============================ -->
+<div data-lang="pt">
+
+  <div class="caixa destaque">
+    <h3>Resumo</h3>
+    <ul>
+      <li>Coletamos seu e-mail e os lançamentos financeiros que você cadastra.</li>
+      <li>Não coletamos localização, contatos, fotos, arquivos, câmera nem microfone.</li>
+      <li>Não usamos nenhuma ferramenta de análise, rastreamento, publicidade ou relatório de falhas.</li>
+      <li>Você pode apagar sua conta e todos os dados pelo próprio app, a qualquer momento.</li>
+    </ul>
+  </div>
+
+  <h2>Quem é o responsável</h2>
+  <p>
+    O responsável pelo tratamento dos seus dados é o desenvolvedor do Contas na
+    Mão, que pode ser contatado em
+    <a href="mailto:seaopened@gmail.com">seaopened@gmail.com</a>. Esse é o
+    canal para qualquer pedido ou dúvida relacionada a esta política.
+  </p>
+
+  <h2>Dados que saem do seu aparelho</h2>
+  <p>
+    Ficam guardados no banco de dados do app, para que você possa acessar os
+    mesmos lançamentos em qualquer aparelho em que entrar na sua conta.
+  </p>
+  <div class="tabela-rolavel">
+    <table>
+      <tr><th>Dado</th><th>Para que</th></tr>
+      <tr>
+        <td>Endereço de e-mail</td>
+        <td>Identificar sua conta e permitir o login</td>
+      </tr>
+      <tr>
+        <td>Senha</td>
+        <td>Autenticar o login. É guardada apenas como hash pelo serviço de autenticação; nem o app nem o desenvolvedor têm acesso à senha em si</td>
+      </tr>
+      <tr>
+        <td>Identificador da conta</td>
+        <td>Código interno que liga cada lançamento à sua conta</td>
+      </tr>
+      <tr>
+        <td>Orçamentos</td>
+        <td>O nome de cada lista que você cria</td>
+      </tr>
+      <tr>
+        <td>Despesas</td>
+        <td>Nome, valor, tipo, vencimento, se está paga, valor já pago e parcela</td>
+      </tr>
+      <tr>
+        <td>Entradas</td>
+        <td>Descrição, valor, tipo e data</td>
+      </tr>
+      <tr>
+        <td>Gastos do dia-a-dia</td>
+        <td>Descrição, valor e data</td>
+      </tr>
+    </table>
+  </div>
+
+  <h2>Dados que ficam só no seu aparelho</h2>
+  <p>
+    Estes nunca são enviados a servidor nenhum. Desaparecem quando você
+    desinstala o app ou limpa os dados dele.
+  </p>
+  <ul>
+    <li>Tema (claro ou escuro) e idioma</li>
+    <li>Qual orçamento estava aberto da última vez</li>
+    <li>Suas preferências de cálculo do saldo anterior e de ordenação das listas</li>
+    <li>O estado do período de teste e da assinatura</li>
+    <li>Os lembretes de vencimento agendados</li>
+  </ul>
+
+  <h2>Permissões que o app pede, e por quê</h2>
+  <div class="tabela-rolavel">
+    <table>
+      <tr><th>Permissão</th><th>Motivo</th></tr>
+      <tr><td>Internet e estado da rede</td><td>Sincronizar seus lançamentos com o banco de dados</td></tr>
+      <tr><td>Notificações</td><td>Avisar no dia do vencimento de cada conta</td></tr>
+      <tr><td>Alarmes e lembretes</td><td>Fazer esse aviso chegar no horário certo</td></tr>
+      <tr><td>Executar ao iniciar o aparelho</td><td>Reagendar os lembretes depois de o celular ser reiniciado</td></tr>
+      <tr><td>Vibração</td><td>Vibrar junto com a notificação</td></tr>
+      <tr><td>Faturamento da loja</td><td>Processar a assinatura pela Google Play ou App Store</td></tr>
+    </table>
+  </div>
+
+  <h2>Assinatura e pagamento</h2>
+  <p>
+    O app tem um período de teste gratuito de 20 dias. A cobrança da assinatura
+    é processada inteiramente pela loja onde você baixou o app — Google Play ou
+    App Store. <strong>O app não recebe, não vê e não guarda dados de cartão ou
+    de pagamento.</strong> Apenas o estado da assinatura (ativa ou não) fica
+    registrado no seu aparelho.
+  </p>
+
+  <h2>Quem mais tem acesso</h2>
+  <p>
+    Não vendemos nem compartilhamos seus dados para fins comerciais. Os únicos
+    terceiros envolvidos são os provedores de infraestrutura necessários para o
+    app funcionar, que tratam os dados em nosso nome e não podem usá-los para
+    outros fins:
+  </p>
+  <ul>
+    <li><strong>Supabase</strong> — banco de dados e autenticação. É onde seus lançamentos ficam guardados.</li>
+    <li><strong>Google Play</strong> e <strong>Apple App Store</strong> — distribuição do app e processamento da assinatura.</li>
+  </ul>
+  <p>
+    Os servidores usados podem estar localizados fora do Brasil, o que implica
+    transferência internacional de dados, feita apenas para a finalidade de
+    operar o app.
+  </p>
+
+  <h2>Segurança</h2>
+  <ul>
+    <li>Toda comunicação entre o app e o servidor é criptografada em trânsito (HTTPS/TLS).</li>
+    <li>O banco de dados usa regras de segurança por linha, de modo que cada conta só consegue ler e alterar os próprios lançamentos — nem com o acesso de outra conta é possível ver os seus.</li>
+    <li>Sua senha é guardada apenas como hash pelo serviço de autenticação.</li>
+  </ul>
+
+  <h2>Por quanto tempo guardamos</h2>
+  <p>
+    Seus dados ficam guardados enquanto sua conta existir. Ao excluir a conta,
+    tudo é apagado imediatamente. Cópias de segurança do banco de dados expiram
+    no ciclo normal de retenção, em até 30 dias.
+  </p>
+
+  <h2>Seus direitos</h2>
+  <p>
+    Pela Lei Geral de Proteção de Dados, você pode a qualquer momento:
+  </p>
+  <ul>
+    <li><strong>Acessar</strong> seus dados — todos eles estão visíveis no próprio app.</li>
+    <li><strong>Corrigir</strong> seus dados — editando os lançamentos no app.</li>
+    <li><strong>Excluir</strong> sua conta e todos os dados — em Configurações, na opção "Excluir minha conta", ou pelo e-mail de contato. Ver a <a href="exclusao-conta.html">página de exclusão de conta</a>.</li>
+    <li><strong>Levar seus dados</strong> — a opção "Baixar PDF do mês" gera um relatório de qualquer mês.</li>
+    <li><strong>Saber</strong> com quem os dados são compartilhados — a lista completa está na seção acima.</li>
+  </ul>
+  <p>
+    Para exercer qualquer um deles, escreva para
+    <a href="mailto:seaopened@gmail.com">seaopened@gmail.com</a>.
+  </p>
+
+  <h2>Crianças</h2>
+  <p>
+    O app não é destinado a menores de 13 anos e não coletamos dados de crianças
+    de forma consciente. Se você acredita que uma criança criou uma conta,
+    escreva para o e-mail de contato e nós a apagaremos.
+  </p>
+
+  <h2>Mudanças nesta política</h2>
+  <p>
+    Se esta política mudar, a data de última atualização no topo da página muda
+    junto. Mudanças relevantes na forma como tratamos os dados serão avisadas
+    dentro do app.
+  </p>
+
+  <footer>
+    <p><strong>Contas na Mão</strong> — controle de contas e orçamento mensal.</p>
+    <p>Contato: <a href="mailto:seaopened@gmail.com">seaopened@gmail.com</a></p>
+    <p><a href="exclusao-conta.html">Como excluir sua conta</a></p>
+  </footer>
+
+</div>
+
+<!-- ============================= ENGLISH ============================= -->
+<div data-lang="en" hidden>
+
+  <div class="caixa destaque">
+    <h3>Summary</h3>
+    <ul>
+      <li>We collect your email address and the financial records you enter.</li>
+      <li>We do not collect location, contacts, photos, files, camera or microphone.</li>
+      <li>We use no analytics, tracking, advertising or crash-reporting tools.</li>
+      <li>You can erase your account and all data from inside the app, at any time.</li>
+    </ul>
+  </div>
+
+  <h2>Who is responsible</h2>
+  <p>
+    The controller of your data is the developer of Bills in Hand, who can be
+    reached at <a href="mailto:seaopened@gmail.com">seaopened@gmail.com</a>.
+    That is the channel for any request or question about this policy.
+  </p>
+
+  <h2>Data that leaves your device</h2>
+  <p>
+    This is stored in the app's database so that you can reach the same records
+    from any device where you sign in to your account.
+  </p>
+  <div class="tabela-rolavel">
+    <table>
+      <tr><th>Data</th><th>Why</th></tr>
+      <tr><td>Email address</td><td>To identify your account and allow sign-in</td></tr>
+      <tr>
+        <td>Password</td>
+        <td>To authenticate sign-in. It is stored only as a hash by the authentication service; neither the app nor the developer can read the password itself</td>
+      </tr>
+      <tr><td>Account identifier</td><td>An internal code linking each record to your account</td></tr>
+      <tr><td>Budgets</td><td>The name of each list you create</td></tr>
+      <tr><td>Expenses</td><td>Name, amount, type, due date, paid status, amount already paid and instalment number</td></tr>
+      <tr><td>Income</td><td>Description, amount, type and date</td></tr>
+      <tr><td>Daily spending</td><td>Description, amount and date</td></tr>
+    </table>
+  </div>
+
+  <h2>Data that stays only on your device</h2>
+  <p>
+    None of this is sent to any server. It disappears when you uninstall the app
+    or clear its data.
+  </p>
+  <ul>
+    <li>Theme (light or dark) and language</li>
+    <li>Which budget was open last time</li>
+    <li>Your preferences for the previous-month balance and for list sorting</li>
+    <li>The state of the trial period and the subscription</li>
+    <li>The scheduled due-date reminders</li>
+  </ul>
+
+  <h2>Permissions the app requests, and why</h2>
+  <div class="tabela-rolavel">
+    <table>
+      <tr><th>Permission</th><th>Reason</th></tr>
+      <tr><td>Internet and network state</td><td>To sync your records with the database</td></tr>
+      <tr><td>Notifications</td><td>To remind you on each bill's due date</td></tr>
+      <tr><td>Alarms and reminders</td><td>To make that reminder arrive on time</td></tr>
+      <tr><td>Run at device startup</td><td>To reschedule reminders after the phone restarts</td></tr>
+      <tr><td>Vibration</td><td>To vibrate along with the notification</td></tr>
+      <tr><td>Store billing</td><td>To process the subscription through Google Play or the App Store</td></tr>
+    </table>
+  </div>
+
+  <h2>Subscription and payment</h2>
+  <p>
+    The app includes a 20-day free trial. Subscription billing is handled
+    entirely by the store you downloaded the app from — Google Play or the App
+    Store. <strong>The app does not receive, see or store any card or payment
+    details.</strong> Only the subscription state (active or not) is kept on
+    your device.
+  </p>
+
+  <h2>Who else has access</h2>
+  <p>
+    We do not sell or share your data for commercial purposes. The only third
+    parties involved are the infrastructure providers the app needs in order to
+    work. They process the data on our behalf and may not use it for any other
+    purpose:
+  </p>
+  <ul>
+    <li><strong>Supabase</strong> — database and authentication. This is where your records are stored.</li>
+    <li><strong>Google Play</strong> and <strong>Apple App Store</strong> — app distribution and subscription processing.</li>
+  </ul>
+  <p>
+    The servers used may be located outside your country, which involves an
+    international transfer of data, carried out solely to operate the app.
+  </p>
+
+  <h2>Security</h2>
+  <ul>
+    <li>All communication between the app and the server is encrypted in transit (HTTPS/TLS).</li>
+    <li>The database uses row-level security rules, so each account can only read and change its own records — not even another account's access can reveal yours.</li>
+    <li>Your password is stored only as a hash by the authentication service.</li>
+  </ul>
+
+  <h2>How long we keep it</h2>
+  <p>
+    Your data is kept for as long as your account exists. When you delete the
+    account, everything is erased immediately. Database backups expire on the
+    normal retention cycle, within 30 days.
+  </p>
+
+  <h2>Your rights</h2>
+  <p>You may, at any time:</p>
+  <ul>
+    <li><strong>Access</strong> your data — all of it is visible inside the app.</li>
+    <li><strong>Correct</strong> your data — by editing the records in the app.</li>
+    <li><strong>Erase</strong> your account and all data — in Settings, under "Delete my account", or by email. See the <a href="exclusao-conta.html">account deletion page</a>.</li>
+    <li><strong>Take your data with you</strong> — the "Download month PDF" option produces a report for any month.</li>
+    <li><strong>Know</strong> who the data is shared with — the full list is in the section above.</li>
+  </ul>
+  <p>
+    To exercise any of these, write to
+    <a href="mailto:seaopened@gmail.com">seaopened@gmail.com</a>.
+  </p>
+
+  <h2>Children</h2>
+  <p>
+    The app is not directed to children under 13 and we do not knowingly collect
+    data from children. If you believe a child has created an account, write to
+    the contact address and we will delete it.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    If this policy changes, the last-updated date at the top of the page changes
+    with it. Material changes to how we handle data will be announced inside the
+    app.
+  </p>
+
+  <footer>
+    <p><strong>Bills in Hand</strong> — monthly bills and budget tracking.</p>
+    <p>Contact: <a href="mailto:seaopened@gmail.com">seaopened@gmail.com</a></p>
+    <p><a href="exclusao-conta.html">How to delete your account</a></p>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var botoes = { pt: document.getElementById('btn-pt'), en: document.getElementById('btn-en') };
+    var titulos = {
+      pt: 'Política de Privacidade — Contas na Mão',
+      en: 'Privacy Policy — Bills in Hand'
+    };
+
+    function aplicar(idioma) {
+      document.querySelectorAll('[data-lang]').forEach(function (el) {
+        el.hidden = el.getAttribute('data-lang') !== idioma;
+      });
+      botoes.pt.setAttribute('aria-pressed', String(idioma === 'pt'));
+      botoes.en.setAttribute('aria-pressed', String(idioma === 'en'));
+      document.documentElement.lang = idioma === 'pt' ? 'pt-BR' : 'en';
+      document.title = titulos[idioma];
+      // Guardar a escolha é conveniência de leitor, não estado necessário:
+      // em janela privada ou com dados bloqueados isso lança, e a página
+      // precisa continuar funcionando igual.
+      try { localStorage.setItem('idioma-site', idioma); } catch (e) {}
+    }
+
+    var salvo = null;
+    try { salvo = localStorage.getItem('idioma-site'); } catch (e) {}
+
+    var inicial = salvo;
+    if (inicial !== 'pt' && inicial !== 'en') {
+      var nav = (navigator.language || 'pt').toLowerCase();
+      inicial = nav.indexOf('pt') === 0 ? 'pt' : 'en';
+    }
+    if (inicial !== 'pt') aplicar(inicial);
+
+    botoes.pt.addEventListener('click', function () { aplicar('pt'); });
+    botoes.en.addEventListener('click', function () { aplicar('en'); });
+  })();
+</script>
+
+</div>
+</body>
+</html>
